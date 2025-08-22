@@ -1,0 +1,37 @@
+<h3>Todos List</h3>
+
+@if (!todoItems().length){
+  <p>Loading...</p>
+}
+
+<form>
+  <label>Filter Todos</label>
+  <input name="searchTerm"
+         [(ngModel)]="searchTerm"
+         placeholder="Search todos ..." />
+</form>
+
+<form action="">
+  <label>Create New Todo</label>
+  <input name="createNewTodo"
+         [(ngModel)]="newTodoTitle"
+         (ngModelChange)="newTodoTitle.set($event)"
+         placeholder="title">
+  <button (click)="addNewTodo()">Dodaj</button>
+</form>
+
+
+<ul class="todos"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)">
+  @for (todo of todoItems() | filterTodos : searchTerm(); track todo.id){
+    <li cdkDrag>
+      <app-todo-item
+        [todo]="todo"
+        (todoToggled)="updateTodoItem($event)"
+        (todoDeleted)="deleteTodoItem($event)" />
+    </li>
+  }
+</ul>
+
+

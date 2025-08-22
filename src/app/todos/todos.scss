@@ -1,0 +1,96 @@
+//.todos {
+//  &__item {
+//    display: flex;
+//    align-items: center;
+//    gap: 8px;
+//
+//  }
+//
+//}
+
+h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  input {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #007acc;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #005ea3;
+    }
+  }
+}
+
+.todos {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  //list-style: none;
+  //padding: 0;
+  //margin: 0;
+  //border: 1px solid #ddd;
+  //border-radius: 4px;
+  //overflow: hidden;
+
+
+  li {
+    margin-bottom: 0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: grab;
+    transition: transform 0.2s ease;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
