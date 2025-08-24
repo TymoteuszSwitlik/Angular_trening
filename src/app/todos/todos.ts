@@ -21,7 +21,7 @@ export class Todos implements OnInit {
   newTodoTitle = signal('');
 
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.todoService
       .getTodos()
       .pipe(
@@ -35,8 +35,9 @@ export class Todos implements OnInit {
       });
   }
 
+
   updateTodoItem(todoItem: Todo): void {
-    this.todoItems.update((todos) =>{
+    this.todoItems.update((todos) => {
       return todos.map(todo => {
         if (todo.id == todoItem.id) {
           return {
@@ -54,8 +55,8 @@ export class Todos implements OnInit {
     if (!title) return;
 
     const newTodo: Todo = {
-      user_id : 1,
-      title : title,
+      user_id: 1,
+      title: title,
       completed: false,
       id: Date.now()
     }
@@ -72,7 +73,7 @@ export class Todos implements OnInit {
     console.log("usunięto zadanie")
   }
 
-  drop(event: CdkDragDrop<Todo[]>): void{
+  drop(event: CdkDragDrop<Todo[]>): void {
     const todosCopy = [...this.todoItems()];
     moveItemInArray(todosCopy, event.previousIndex, event.currentIndex);
     this.todoItems.set(todosCopy);
@@ -80,4 +81,15 @@ export class Todos implements OnInit {
   }
 
 
+
+  resetTodos(): void {
+    this.todoItems.update((todos) => {
+        return [...todos].sort((a, b) => a.id - b.id);
+      }
+    )
+  }
+
+
 }
+
+
